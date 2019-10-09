@@ -1,0 +1,104 @@
+@import url("https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap");
+html, body {
+  background-color: #232526;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  font-family: "Inconsolata";
+}
+
+.info {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+}
+.info h1 {
+  font-size: 40px;
+  margin-top: 0;
+  margin-bottom: 0;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  font-weight: 400;
+}
+.info h3 {
+  color: #FF5353;
+}
+
+.blocks {
+  color: #fff;
+}
+.blocks .row {
+  display: flex;
+}
+.blocks .block {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s 0.2s;
+  cursor: pointer;
+  margin: 12px;
+}
+.blocks .block:active {
+  background-color: #fff;
+  transition: 0s;
+  color: black;
+}
+.blocks .block.block1 {
+  box-shadow: 0px 0px 35px rgba(255, 83, 83, 0.2);
+  background-color: transparent;
+  border: 1px solid #ff6d6d;
+}
+.blocks .block.block1:hover {
+  background-color: rgba(255, 83, 83, 0.3);
+  box-shadow: 0px 0px 35px rgba(255, 83, 83, 0.5);
+}
+.blocks .block.block1:active {
+  box-shadow: 0px 0px 35px #FF5353;
+  background-color: #FF5353;
+}
+.blocks .block.block2 {
+  box-shadow: 0px 0px 35px rgba(255, 196, 41, 0.2);
+  background-color: transparent;
+  border: 1px solid #ffcb43;
+}
+.blocks .block.block2:hover {
+  background-color: rgba(255, 196, 41, 0.3);
+  box-shadow: 0px 0px 35px rgba(255, 196, 41, 0.5);
+}
+.blocks .block.block2:active {
+  box-shadow: 0px 0px 35px #FFC429;
+  background-color: #FFC429;
+}
+.blocks .block.block3 {
+  box-shadow: 0px 0px 35px rgba(89, 128, 193, 0.2);
+  background-color: transparent;
+  border: 1px solid #6c8ec8;
+}
+.blocks .block.block3:hover {
+  background-color: rgba(89, 128, 193, 0.3);
+  box-shadow: 0px 0px 35px rgba(89, 128, 193, 0.5);
+}
+.blocks .block.block3:active {
+  box-shadow: 0px 0px 35px #5980C1;
+  background-color: #5980C1;
+}
+.blocks .block.block4 {
+  box-shadow: 0px 0px 35px rgba(251, 233, 183, 0.2);
+  background-color: transparent;
+  border: 1px solid #fcf0cf;
+}
+.blocks .block.block4:hover {
+  background-color: rgba(251, 233, 183, 0.3);
+  box-shadow: 0px 0px 35px rgba(251, 233, 183, 0.5);
+}
+.blocks .block.block4:active {
+  box-shadow: 0px 0px 35px #FBE9B7;
+  background-color: #FBE9B7;
+}
