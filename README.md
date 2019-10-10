@@ -1,5 +1,3 @@
-#### This is a beta version. More functions coming soon..
-
 ## Website’s goal
 Play one of the best Retro-Games of all time: Simon Says!
 
