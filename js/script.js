@@ -1,5 +1,5 @@
 //--------------------------------
-//          方塊物件
+//          Block
 //--------------------------------
 var Blocks = function(blockAssign,setAssign){
   this.allOn=false
@@ -17,7 +17,7 @@ var Blocks = function(blockAssign,setAssign){
     })
   )
 }
-//閃爍單一方塊＋聲音(方塊名)
+//Single block flash＋Sound(name)
 Blocks.prototype.flash=function(note){
   let block = this.blocks.find(d=>d.name==note)
   if (block){
@@ -31,25 +31,25 @@ Blocks.prototype.flash=function(note){
     },100)
   }
 }
-//點亮所有方塊
+//light up all the blocks
 Blocks.prototype.turnOnAll=function(note){
   this.allOn=true
   this.blocks.forEach(d=>{
     d.el.addClass("active")
   })
 }
-//關掉所有方塊
+//turn off all the blocks
 Blocks.prototype.turnOffAll=function(note){
   this.allOn=false
   this.blocks.forEach(d=>{
     d.el.removeClass("active")
   })
 }
-//取得聲音物件
+//Audio
 Blocks.prototype.getAudioObject=function(pitch){
   return new Audio("https://awiclass.monoame.com/pianosound/set/"+ pitch+".wav")
 }
-//播放序列聲音（成功/失敗...）
+//Audio order
 Blocks.prototype.playSet = function(type){
   this.soundSets
     .find(set => set.name==type).sets
@@ -60,10 +60,10 @@ Blocks.prototype.playSet = function(type){
 }
 
 //--------------------------------
-//          遊戲物件
+//          Game Mechanism
 //--------------------------------
 var Game = function (){
-  //定義關卡
+  //level define
   this.blocks = new Blocks(
     [
       {selector: ".block1", name: "1", pitch: "1"},
@@ -85,30 +85,30 @@ var Game = function (){
     "2342341231231423414232"
   ]
   let _this = this
-  //下載關卡
+  //download level
   $.ajax({
     url: "https://2017.awiclass.monoame.com/api/demo/memorygame/leveldata",
     success: function(res){
       _this.levels = res
     }
   })
-  //設定現在在的關卡跟播放間隔
+  //current level, and waiting time
   this.currentLevel = 0
   this.playInterval = 400
   this.mode="waiting"
 }
-//開始關卡
+//level start
 Game.prototype.startLevel = function(){
   // console.log("start Level "+ this.currentLevel)
   this.showMessage("Level "+ this.currentLevel)
   this.startGame(this.levels[this.currentLevel])
 }
-//顯示訊息
+//message
 Game.prototype.showMessage = function(message){
   console.log(message)
   $(".status").text(message)
 }
-//開始遊戲（答案）
+//Game Answers
 Game.prototype.startGame = function(answer){
   this.mode="gamePlay"
   this.answer = answer
@@ -125,18 +125,18 @@ Game.prototype.startGame = function(answer){
     _this.playNote(char)
   },this.playInterval)
 }
-//播放音符
+//Audio
 Game.prototype.playNote = function(note){
   console.log(note)
   this.blocks.flash(note)
 
 }
-//開始輸入模式
+//Input
 Game.prototype.startUserInput = function(){
   this.userInput = ""
   this.mode="userInput"
 }
-//使用者輸入
+//User Input
 Game.prototype.userSendInput = function(inputChar){
   if (this.mode=="userInput"){
     let tempString = this.userInput + inputChar
@@ -160,7 +160,7 @@ Game.prototype.userSendInput = function(inputChar){
     }
   }
 }
-//顯示回答狀態
+//Show status
 Game.prototype.showStatus = function(tempString){
   $(".inputStatus").html("")
   this.answer.split("").forEach((d,i)=>{
@@ -185,7 +185,7 @@ Game.prototype.showStatus = function(tempString){
     this.blocks.turnOffAll()
   }
   if (this.answer.indexOf(tempString)!=0){
-    this.showMessage("Wrong...")
+    this.showMessage("Wrong! Please try again!")
     $(".inputStatus").addClass("wrong")
     this.blocks.turnOnAll()
     this.blocks.playSet("wrong")
@@ -196,7 +196,7 @@ Game.prototype.showStatus = function(tempString){
 }
 
 //--------------------
-//     開新遊戲
+//     Start a new game
 var game = new Game()
 setTimeout(function(){
   game.startLevel()
